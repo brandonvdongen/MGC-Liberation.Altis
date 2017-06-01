@@ -1,4 +1,4 @@
-![Liberation](http://i.imgur.com/bcWRxMT.png)
+![Liberation](https://github.com/brandonvdongen/MGC-Liberation.Altis/blob/master/res/liberation.jpg)
 
 # Liberation for Arma 3
 
