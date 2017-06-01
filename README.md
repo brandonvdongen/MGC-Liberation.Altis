@@ -1,3 +1,4 @@
+(this is a copy of the original readme of the version we started modifying, it does not accuratly represent the latest version of liberation!)
 ![Liberation](http://i.imgur.com/bcWRxMT.png)
 
 # Liberation for Arma 3
@@ -27,6 +28,3 @@ Discussion about the mission on the official forums.
 
 ### [Twitter](https://twitter.com/PsychoticFrog1)
 New releases will be posted on my twitter, if some people still use that :P
-
-### [Trello](https://trello.com/b/FfUXrHn1/liberation-dev)
-You can follow the progress and see the upcoming features on Trello. If you create an account (for free) you can comment and vote, so feel free to help us prioritize the upcoming features ;)
