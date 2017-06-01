@@ -7,7 +7,7 @@ allowFunctionsLog = 0;
 
 loadScreen="res\liberation.jpg";
 onLoadMission = $STR_MISSION_TITLE;
-author = "[GREUH] Zbug, [GREUH] McKeewa  edited by lopox";
+author = "Team GREUH tweaked by lopox, Redpanther & PF_Cactus";
 onLoadName = $STR_MISSION_TITLE;
 
 joinUnassigned = 0;
@@ -23,6 +23,15 @@ class Header
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
+#include "scripts\GOM\dialogs\GOM_dialog_parents.hpp"
+#include "scripts\GOM\dialogs\GOM_dialog_controls.hpp"
+
+class CfgFunctions
+{
+
+	#include "scripts\GOM\functions\GOM_fnc_functions.hpp"
+
+};
 
 class CfgDebriefing
 {

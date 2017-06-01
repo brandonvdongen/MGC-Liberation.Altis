@@ -9,10 +9,10 @@ if ( isServer ) then {
 		execVM "ATLAS_Water\scripts\large_object_attach.sqf";
 		[ lhd ] execVM "ATLAS_WAter\LHD\scripts\initlights.sqf";
 		lhd hideObject true;
-		{ deleteVehicle _x } foreach ( ( getmarkerpos "base_chimera" ) nearObjects 500 );
+		{ deleteVehicle _x } foreach ( ( getmarkerpos "uss_freedom" ) nearObjects 500 );
 		GRLIB_isAtlasPresent = true; publicVariable "GRLIB_isAtlasPresent";
 	} else {
-		lhd setpos getmarkerpos "base_chimera";
+		lhd setpos getmarkerpos "uss_freedom";
 		lhd hideObject true;
 		{ deleteVehicle _x } foreach ( ( getmarkerpos "lhd" ) nearObjects 500 );
 		GRLIB_isAtlasPresent = false; publicVariable "GRLIB_isAtlasPresent";
@@ -22,7 +22,7 @@ if ( isServer ) then {
 };
 
 if ( GRLIB_isAtlasPresent ) then {
-	deleteMarkerLocal "base_chimera";
+	deleteMarkerLocal "uss_freedom";
 } else {
 	deleteMarkerLocal "lhd";
 };

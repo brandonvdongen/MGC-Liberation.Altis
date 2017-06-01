@@ -40,7 +40,7 @@ if ( count GRLIB_all_fobs == 0 ) then {
 				_fobbox allowDamage true;
 			} else {
 				_fobbox = FOB_box_typename createVehicle (getpos base_boxspawn);
-				_fobbox setpos (getpos base_boxspawn);
+				_fobbox setposasl (getposasl base_boxspawn);
 				_fobbox setdir 215;
 			};
 

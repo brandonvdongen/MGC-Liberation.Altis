@@ -19,11 +19,16 @@ if(isServer) then{
 			_vehicle = _vehicletype createVehicle _positionofvehicle; // create a new vehicle of same type at starting position
 			_vehicle setPosATL _positionofvehicle; //set correct position
 			_vehicle setDir _facingofvehicle; //set correct facing of the vehicle
-			[[[_vehicle,_respawntime],"vehicle_respawn.sqf"],"BIS_fnc_execVM",false,false] spawn BIS_fnc_MP; //replacement for the old setVehicleInit, this does the same and causes the new vehicle to have the respawn script when created
+			[[[_vehicle,_respawntime],"drone_respawn.sqf"],"BIS_fnc_execVM",false,false] spawn BIS_fnc_MP; //replacement for the old setVehicleInit, this does the same and causes the new vehicle to have the respawn script when created
 			_n = 0; // break out condition
+		};
+		if(alive _vehicle and {alive _x} count crew _vehicle == 0) then{
+			createVehicleCrew _vehicle;
+			sleep 1;
 			_vehicle animate ["wing_fold_l", 1]; 
 			_vehicle animate ["wing_fold_r", 1]; 
-		};
-		sleep 60; // sleep for a bit in order to reduce processing calls (increase this to whatever you like, longer gives better performance but also increases response delay)
+		}else{
+			sleep 60;
+		}		// sleep for a bit in order to reduce processing calls (increase this to whatever you like, longer gives better performance but also increases response delay)
 	};
 };

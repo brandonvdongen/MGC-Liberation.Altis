@@ -1,6 +1,7 @@
 
-private [ "_idact_build",  "_idact_arsenal", "_idact_buildfob", "_idact_redeploy", "_idact_tutorial", "_distfob", "_distarsenal",  "_distbuildfob", "_distspawn", "_distredeploy", "_idact_commander" ];
+private ["_gom_rearm", "_idact_build",  "_idact_arsenal", "_idact_buildfob", "_idact_redeploy", "_idact_tutorial", "_distfob", "_distarsenal",  "_distbuildfob", "_distspawn", "_distredeploy", "_idact_commander" ];
 
+_gom_rearm = -1;
 _idact_build = -1;
 _idact_arsenal = -1;
 _idact_buildfob = -1;
@@ -152,5 +153,15 @@ while { true } do {
 		};
 	};
 
+	if(alive player && (cursorTarget isKindOf 'Air') && (cursorTarget distance player < 10) )then{
+		if(_gom_rearm == -1)then{
+			_gom_rearm = player addAction ["Change Aircraft Loadouts",{[player] call GOM_fnc_aircraftLoadout},[cursorTarget],6,false,false,"","true"]; 
+		}
+	}else{
+		if(_gom_rearm != -1)then{
+			player removeAction _gom_rearm;
+			_gom_rearm = -1;
+		}
+	};
 	sleep 1;
 };

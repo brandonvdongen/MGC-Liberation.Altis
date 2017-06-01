@@ -124,7 +124,7 @@ air_vehicles = [
     ["B_Plane_Fighter_01_Stealth_F",0,250,50],          //Black Wasp II Stealth
     ["O_Plane_Fighter_02_F",0,250,50],                  //Shikra
     ["O_Plane_Fighter_02_Stealth_F",0,250,50],          //Shikra Stealth
-//  ["B_UAV_05_F",0,50,10],                             //Sentinel
+    ["B_UAV_05_F",0,150,50],                             //Sentinel
     ["I_Plane_Fighter_04_F",0,250,50]	                //Gryphon
 ];
 if ( isNil "air_vehicles_extension" ) then { air_vehicles_extension = [] };

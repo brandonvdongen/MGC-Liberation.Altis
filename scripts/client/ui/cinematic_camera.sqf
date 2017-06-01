@@ -61,7 +61,7 @@ while { cinematic_camera_started } do {
 			if ( GRLIB_isAtlasPresent ) then {
 				_camtarget = lhdofficer;
 			} else {
-				_camtarget = chimeraofficer;
+				_camtarget = ussfreedomlhd;
 			};
 		} else {
 			if ( count ( [ _nearentities , { alive _x && isPlayer _x } ] call BIS_fnc_conditionalSelect ) != 0 ) then {
@@ -74,8 +74,8 @@ while { cinematic_camera_started } do {
 		};
 
 		_cinematic_camera camSetTarget _camtarget;
-		_startpos = [ ((getpos _camtarget) select 0) - 60, ((getpos _camtarget) select 1) + 350, 5 ];
-		_endpos = [ ((getpos _camtarget) select 0) - 60, ((getpos _camtarget) select 1) - 230, 5 ];
+		_startpos = [ ((getpos _camtarget) select 0) - 60, ((getpos _camtarget) select 1) + 450, 5 ];
+		_endpos = [ ((getpos _camtarget) select 0) - 60, ((getpos _camtarget) select 1) - 330, 5 ];
 		_startfov = 0.5;
 		_endfov = 0.5;
 
@@ -259,7 +259,7 @@ while { cinematic_camera_started } do {
 					if ( GRLIB_isAtlasPresent ) then {
 						_nearest_sector = "BLUFOR LHD";
 					} else {
-						_nearest_sector = "BASE CHIMERA";
+						_nearest_sector = "USS Freedom";
 					};
 				} else {
 					_nearest_sector = [300, _position ] call F_getNearestSector;

@@ -24,8 +24,9 @@ while { true } do {
 			huron setposasl [(getpos lhd select 0) -9, (getpos lhd select 1) + 62, (18.5   + (getposasl lhd select 2))];
 		} else {
 			huron = huron_typename createVehicle ( getpos huronspawn );
+			huron enableSimulationGlobal false;
 			huron allowdamage false;
-			huron setpos ( getpos huronspawn );
+			huron setposasl ( getposasl huronspawn );
 			huron setDir 0;
 		};
 	};

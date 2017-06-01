@@ -3,7 +3,7 @@ fullmap = 0;
 _old_fullmap = 0;
 _standard_map_pos = [];
 _frame_pos = [];
-
+_baseship = "USS Freedom";
 GRLIB_force_redeploy = false;
 
 waitUntil { !isNil "GRLIB_all_fobs" };
@@ -21,7 +21,7 @@ _basenamestr = "";
 if ( GRLIB_isAtlasPresent ) then {
 	_basenamestr = "BLUFOR LHD";
 } else {
-	_basenamestr = "BASE CHIMERA";
+	_basenamestr = "USS FREEDOM - LHD";
 };
 
 while { true } do {
@@ -78,7 +78,7 @@ while { true } do {
 	lbSetCurSel [ 203, 0 ];
 
 	while { dialog && alive player && deploy == 0} do {
-		choiceslist = [ [ _basenamestr, getpos lhd ] ];
+		choiceslist = [[_baseship, getpos ship_respawn] ];
 
 		for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 			choiceslist = choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
@@ -158,17 +158,33 @@ while { true } do {
 		if (((choiceslist select _idxchoice) select 0) == _basenamestr) then {
 			call respawn_lhd;
 		} else {
-			if (count (choiceslist select _idxchoice) == 3) then {
-				_truck = (choiceslist select _idxchoice) select 2;
-				player setpos ([_truck, 5 + (random 3), random 360] call BIS_fnc_relPos)
-			} else {
-				_destpos = ((choiceslist select _idxchoice) select 1);
-				player setpos [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),0];
-			};
-		};
+			if (((choiceslist select _idxchoice) select 0) == _baseship) then{
+				_lhd_x = -5;
+				_lhd_y = -5;
+				_lhd_z = 0;
+				_spread = 6;
 
-		if ( (lbCurSel 203) > 0 ) then {
-			[ player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
+				_lhd_z = _lhd_z + (getposasl ship_respawn select 2);
+
+				_rotation = (getdir ship_respawn);
+				_posx = (getposasl ship_respawn select 0) + _lhd_x;
+				_posy = (getposasl ship_respawn select 1) + _lhd_y;
+				_posx = (_posx + (random _spread)) - (_spread / 2);
+				_posy = (_posy + (random _spread)) - (_spread / 2);
+				player setposasl [ _posx , _posy, _lhd_z ];
+			} else {
+				if (count (choiceslist select _idxchoice) == 3) then {
+					_truck = (choiceslist select _idxchoice) select 2;
+					player setpos ([_truck, 5 + (random 3), random 360] call BIS_fnc_relPos)
+				} else {
+					_destpos = ((choiceslist select _idxchoice) select 1);
+					player setpos [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),0];
+				};
+			};
+
+			if ( (lbCurSel 203) > 0 ) then {
+				[ player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
+			};
 		};
 	};
 
