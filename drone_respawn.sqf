@@ -4,7 +4,7 @@
 // Will run only on the server, as it only needs to run in one place, but obviously can be used in both singleplayer and multiplayer
 
 _vehicle = _this select 0; //get vehicle's details
-_respawntime = _this select 1; //get the init set respawn time
+_respawntime = 10; //get the init set respawn time
 _facingofvehicle = getDir _vehicle; //get original facing
 _positionofvehicle = getPosATL _vehicle; //get original position
 _vehicletype = typeOf _vehicle; //get the vehicle type
@@ -13,7 +13,7 @@ _n = 1;
 if(isServer) then{
 	while{_n == 1} do{
 		if(!alive _vehicle) then { //true if vehicle is not alive or it cannot move
-			sleep 240; //change this to what you like, longer will give you a bigger response delay between unit being killed and the vehicle being deleted
+			sleep 230; //change this to what you like, longer will give you a bigger response delay between unit being killed and the vehicle being deleted
 			deleteVehicle _vehicle; //clear up old vehicle
 			sleep _respawntime; // respawn time between deletion and then respawn
 			_vehicle = _vehicletype createVehicle _positionofvehicle; // create a new vehicle of same type at starting position
