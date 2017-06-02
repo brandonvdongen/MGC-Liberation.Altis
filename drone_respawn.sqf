@@ -17,9 +17,12 @@ if(isServer) then{
 			deleteVehicle _vehicle; //clear up old vehicle
 			sleep _respawntime; // respawn time between deletion and then respawn
 			_vehicle = _vehicletype createVehicle _positionofvehicle; // create a new vehicle of same type at starting position
+			_vehicle allowDamage false;
 			_vehicle setPosATL _positionofvehicle; //set correct position
 			_vehicle setDir _facingofvehicle; //set correct facing of the vehicle
 			[[[_vehicle,_respawntime],"drone_respawn.sqf"],"BIS_fnc_execVM",false,false] spawn BIS_fnc_MP; //replacement for the old setVehicleInit, this does the same and causes the new vehicle to have the respawn script when created
+			sleep 2;
+			_vehicle allowDamage true;
 			_n = 0; // break out condition
 		};
 		if(alive _vehicle and {alive _x} count crew _vehicle == 0) then{
