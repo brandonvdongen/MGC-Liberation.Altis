@@ -113,7 +113,7 @@ air_vehicles = [
 	["C_Plane_Civil_01_racing_F",0,0,15],				//Caeser_BTT_Racing
 	["B_UAV_02_dynamicLoadout_F",0,20,10],				//MQ-4A_Greyhawk
 	["B_UAV_02_CAS_F",0,50,10],							//MQ-4A_Greyhawk_CAS
- 	["B_T_UAV_03_F",0,100,10],							//MQ-12_Falcon
+ 	["B_T_UAV_03_dynamicLoadout_F",0,100,10],							//MQ-12_Falcon
 	["I_Plane_Fighter_03_dynamicLoadout_F",0,150,40],	//A-143_Buzzard_AA
 	["I_Plane_Fighter_CAS_F",0,150,40],					//A-143_Buzzard_CAS
 	["B_Plane_CAS_01_dynamicLoadout_F",0,250,40],		//A-164_Wipeout
