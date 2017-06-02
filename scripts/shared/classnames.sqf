@@ -269,7 +269,7 @@ if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [ "B_T_Recon_TL_F","B_T_Recon_F","B_T_Recon_F","B_T_Recon_Medic_F","B_T_Recon_LAT_F","B_T_Recon_LAT_F","B_T_Recon_M_F","B_T_Sniper_F","B_T_Recon_F" ]; };
 if ( isNil "blufor_squad_para" ) then { blufor_squad_para = [] };
 if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [ "B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F" ]; };
-if ( isNil "uavs" ) then { uavs = [] }; uavs = [] + uavs + [ "B_UGV_01_F","B_UGV_01_rcws_F","B_UAV_01_F","B_UAV_02_dynamicLoadout_F","B_UAV_02_CAS_F","B_T_UAV_03_F" ];
+if ( isNil "uavs" ) then { uavs = [] }; uavs = [] + uavs + [ "B_UGV_01_F","B_UGV_01_rcws_F","B_UAV_01_F","B_UAV_02_dynamicLoadout_F","B_UAV_02_CAS_F","B_T_UAV_03_dynamicLoadout_F" ];
 if ( isNil "elite_vehicles_extension" ) then { elite_vehicles_extension = [] }; elite_vehicles = [] + elite_vehicles_extension + [];
 //What can ressuply what comes below.
 if ( isNil "ai_resupply_sources_extension" ) then { ai_resupply_sources_extension = [] };
