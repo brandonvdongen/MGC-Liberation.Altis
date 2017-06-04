@@ -4,7 +4,7 @@ _repair_amount = 0.01;
 _repair_speed = 2;
 _repair_altitude = 2;
 _resupply_dist = 30;
-_rearm_time = 60;
+_rearm_time = 30;
 _refuel_amount = 0.02;
 _rearm_ticker = 0;
 
