@@ -94,7 +94,7 @@ heavy_vehicles = [
 	["B_T_MBT_01_cannon_F",0,75,20],					//M2A1_Slammer
 	["B_T_MBT_01_TUSK_F",0,100,25],						//M2A1_Slammer_UP
 	["B_T_MBT_01_arty_F",0,750,30],						//M4_Scorcher
-	["B_T_MBT_01_mlrs_F",0,1000,100]					//M5_Sandstorm_MLRS
+	["B_T_MBT_01_mlrs_F",0,2000,100]					//M5_Sandstorm_MLRS
 ];
 if ( isNil "heavy_vehicles_extension" ) then { heavy_vehicles_extension = [] };
 if ( isNil "heavy_vehicles_overwrite" ) then { heavy_vehicles_overwrite = false };
@@ -102,6 +102,9 @@ if ( heavy_vehicles_overwrite ) then { heavy_vehicles = heavy_vehicles_extension
 
 air_vehicles = [
 	["B_UAV_01_F",0,0,5],								//AR-2_Darter
+ 	["B_T_UAV_03_dynamicLoadout_F",0,150,10],			//MQ-12_Falcon
+    ["B_UAV_05_F",0,150,50],                            //Sentinel
+	["C_Plane_Civil_01_racing_F",0,0,15],				//Caeser_BTT_Racing	
 	["B_Heli_Light_01_F",0,0,10],						//MH-9_Littlebird
 	["B_Heli_Light_01_dynamicLoadout_F",0,30,10],		//AH-9_Pawnee
 	["I_Heli_light_03_unarmed_F",0,0,10],				//WY-55_Hellcat_Unarmed
@@ -110,22 +113,22 @@ air_vehicles = [
 	["B_Heli_Transport_01_camo_F",0,20,20],	        	//UH-80_Ghosthawk
 	["I_Heli_Transport_02_F",0,0,25],					//CH-49_Mohawk
 	["B_Heli_Transport_03_F",0,20,30],					//CH-67_Huron
-	["C_Plane_Civil_01_racing_F",0,0,15],				//Caeser_BTT_Racing
-	["B_UAV_02_dynamicLoadout_F",0,20,10],				//MQ-4A_Greyhawk
-	["B_UAV_02_CAS_F",0,50,10],							//MQ-4A_Greyhawk_CAS
- 	["B_T_UAV_03_dynamicLoadout_F",0,100,10],							//MQ-12_Falcon
+	["B_UAV_02_dynamicLoadout_F",0,150,10],				//MQ-4A_Greyhawk
+	["B_UAV_02_CAS_F",0,150,10],						//MQ-4A_Greyhawk_CAS
 	["I_Plane_Fighter_03_dynamicLoadout_F",0,150,40],	//A-143_Buzzard_AA
 	["I_Plane_Fighter_CAS_F",0,150,40],					//A-143_Buzzard_CAS
 	["B_Plane_CAS_01_dynamicLoadout_F",0,250,40],		//A-164_Wipeout
 	["B_T_VTOL_01_infantry_F",0,0,50],					//V-44_X_Blackfish_Infantry
 	["B_T_VTOL_01_vehicle_F",0,0,50],					//V-44_X_Blackfish_Vehicle
-	["B_T_VTOL_01_armed_F",0,250,50],					//V-44_X_Blackfish_Armed
-    ["B_Plane_Fighter_01_F",0,250,50],                  //Black Wasp II
-    ["B_Plane_Fighter_01_Stealth_F",0,250,50],          //Black Wasp II Stealth
-    ["O_Plane_Fighter_02_F",0,250,50],                  //Shikra
-    ["O_Plane_Fighter_02_Stealth_F",0,250,50],          //Shikra Stealth
-    ["B_UAV_05_F",0,150,50],                            //Sentinel
-    ["I_Plane_Fighter_04_F",0,250,50]	                //Gryphon
+	["B_T_VTOL_01_armed_F",0,750,50],					//V-44_X_Blackfish_Armed
+    ["I_Plane_Fighter_04_F",0,250,50],                  //Gryphon	
+    ["B_Plane_Fighter_01_F",0,750,50],                  //Black Wasp II
+    ["B_Plane_Fighter_01_Stealth_F",0,750,50],          //Black Wasp II Stealth
+    ["O_Plane_Fighter_02_F",0,750,50],                  //Shikra
+    ["O_Plane_Fighter_02_Stealth_F",0,750,50]           //Shikra Stealth
+	
+
+
 ];
 if ( isNil "air_vehicles_extension" ) then { air_vehicles_extension = [] };
 if ( isNil "air_vehicles_overwrite" ) then { air_vehicles_overwrite = false };
@@ -138,7 +141,7 @@ static_vehicles = [
 	["B_GMG_01_high_F",0,20,0],							//Mk.32_GMG_High
 	["B_T_Static_AA_F",0,30,0],							//Static_Titan_AA
 	["B_T_Static_AT_F",0,30,0],							//Static_Titan_AT
-	["B_T_Mortar_01_F",0,50,0]							//Mk6_Mortar
+	["B_T_Mortar_01_F",0,100,0]							//Mk6_Mortar
 ];
 if ( isNil "static_vehicles_extension" ) then { static_vehicles_extension = [] };
 if ( isNil "static_vehicles_overwrite" ) then { static_vehicles_overwrite = false };
@@ -155,12 +158,24 @@ buildings = [
 	["Land_HelipadCivil_F",0,0,0],
 	["Land_HelipadRescue_F",0,0,0],
 	["Land_HelipadSquare_F",0,0,0],
+	["Land_SurvivalRadio_F",0,0,0],
+	["Land_TripodScreen_01_large_F",0,0,0],
+	["Land_NavigLight",0,0,0],
+	["Land_NavigLight_3_F",0,0,0],
+	["Land_Flush_Light_green_F",0,0,0],
+	["Land_Flush_Light_red_F",0,0,0],
+	["Land_Flush_Light_yellow_F",0,0,0],
+	["Land_runway_edgelight",0,0,0],
+	["Land_runway_edgelight_blue_F",0,0,0],
+	["Land_Runway_PAPI",0,0,0],
+	["Land_Runway_PAPI_2",0,0,0],
+	["Land_Runway_PAPI_3",0,0,0],
+	["Land_Runway_PAPI_4",0,0,0],	
 	["PortableHelipadLight_01_blue_F",0,0,0],
 	["PortableHelipadLight_01_green_F",0,0,0],
 	["PortableHelipadLight_01_red_F",0,0,0],
 	["PortableHelipadLight_01_white_F",0,0,0],
 	["PortableHelipadLight_01_yellow_F",0,0,0],
-	["Land_TentHangar_V1_F",0,0,0],
 	["Flag_NATO_F",0,0,0],
 	["Flag_CTRG_F",0,0,0],
 	["Flag_Gendarmerie_F",0,0,0],
@@ -183,6 +198,13 @@ buildings = [
 	["Land_PortableLight_single_F",0,0,0],
 	["Land_PortableLight_double_F",0,0,0],
 	["Land_BarGate_F",0,0,0],
+	["Land_GH_Platform_F",0,0,0],	
+	["Land_HBarrier_1_F",0,0,0],
+	["Land_HBarrier_3_F",0,0,0],
+	["Land_HBarrier_5_F",0,0,0],
+	["Land_HBarrierBig_F",0,0,0],
+	["Land_HBarrier_Big_F",0,0,0],
+	["Land_HBarrierTower_F",0,0,0],	
 	["Land_HBarrier_01_line_1_green_F",0,0,0],
 	["Land_HBarrier_01_line_3_green_F",0,0,0],
 	["Land_HBarrier_01_line_5_green_F",0,0,0],
@@ -195,9 +217,7 @@ buildings = [
 	["Land_CncBarrierMedium4_F",0,0,0],
 	["Land_CncBarrier_F",0,0,0],
 	["Land_GuardRailing_01_F",0,0,0],		
-	["Land_Wall_IndCnc_2deco_F",0,0,0],
-
-		
+	["Land_Wall_IndCnc_2deco_F",0,0,0],		
 	["Land_TyreBarrier_01_line_x4_F",0,0,0],	
 	["Land_Mil_WallBig_4m_F",0,0,0],	
 	["Land_Mil_WallBig_Corner_F",0,0,0],	
@@ -218,16 +238,18 @@ buildings = [
 	["Land_BagFence_01_round_green_F",0,0,0],	
 	["Land_Razorwire_F",0,0,0],
 	["RoadBarrier_F",0,0,0],
+	["ContainmentArea_01_forest_F",0,0,0],	
 	["Land_Sign_WarningMilAreaSmall_F",0,0,0],
 	["Land_Sign_WarningMilitaryArea_F",0,0,0],
 	["Land_Sign_WarningMilitaryVehicles_F",0,0,0],
 	["ShootingPos_F",0,0,0],
 	["Land_Obstacle_Bridge_F",0,0,0],
 	["Land_JumpTarget_F",0,0,0],
-	["Land_Cargo20_military_green_F",0,0,0],
+	["Land_Cargo20_vr_F",0,0,0],
 	["Land_Cargo40_military_green_F",0,0,0],
 	["Land_ClutterCutter_large_F",0,0,0],	
 	["Land_Airport_Tower_F",0,0,0],
+	["Land_TentHangar_V1_F",0,0,0],	
 	["Land_Dome_Big_F",0,0,0],
 	["Land_Dome_Small_F",0,0,0],
 	["Land_LampAirport_F",0,0,0]
@@ -239,7 +261,7 @@ if ( buildings_overwrite ) then { buildings = buildings_extension; } else { buil
 support_vehicles = [
 	[Arsenal_typename,10,0,0],							//Arsenal_Supply_Box
 	[FOB_box_typename,30,100,0],						//FOB_Box
-	[FOB_truck_typename,30,50,5],						//FOB_Truck
+	[FOB_truck_typename,30,150,5],						//FOB_Truck
 	["B_T_APC_Tracked_01_CRV_F",0,30,10],				//CRV-6e_Bobcat
 	["B_T_Truck_01_Repair_F",10,0,5],					//HEMTT_Repair
 	["B_T_Truck_01_fuel_F",10,0,5],						//HEMTT_Fuel
