@@ -1,5 +1,5 @@
+//GOM_fnc_aircraftLoadout V1.32 made by Grumpy Old Man 17-5-2017
 /*
-GOM_fnc_aircraftLoadout V1.3 made by Grumpy Old Man 17-5-2017
 feel free to use as you like, as long as I'm credited as the original author
 
 works on dedi and MP
@@ -36,6 +36,13 @@ GOM_fnc_handleResources
 
 
 Changelog:
+V1.32
+(HOTFIX) Fixed yet another variable error
+
+V1.31
+(HOTFIX) Fixed variable error
+Added: Check if the aircraft is leaking fuel, and stop refueling until up to the point where the leak occurs.
+
 V1.3
 Added: Resource handling
 	Repairing, refueling and rearming will now deplete the resources of the respective vehicles
@@ -701,7 +708,7 @@ GOM_fnc_rearmCheck = {
 
 	_abort = false;
 	_text = "";
-_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {getNumber (configfile >> "CfgVehicles" >> typeof _x >> "transportAmmo") > 0} AND {_x getvariable ["GOM_fnc_ammoCargo",0] > 0}});
+_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_ammoCargo",0] > 0}});
 
 	if (_vehs isequalto []) then {_abort = true;_text = "You have no valid ammo sources!";};
 	_vehs params ["_source"];
@@ -730,7 +737,7 @@ GOM_fnc_refuelCheck = {
 	_abort = false;
 	_text = "";
 
-	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {getNumber (configfile >> "CfgVehicles" >> typeof _x >> "transportFuel") > 0} AND {_x getvariable ["GOM_fnc_fuelCargo",0] > 0}});
+	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_fuelCargo",0] > 0}});
 
 	if (_vehs isequalto [] AND GOM_fnc_aircraftLoadout_NeedsFuelSource) then {_abort = true;_text = "You have no valid fuel sources!";};
 	_vehs params ["_source"];
@@ -754,6 +761,44 @@ if (_abort) then {systemchat _text;playsound "Simulation_Fatal"};
 
 };
 
+GOM_fuelLeak = {
+
+	params ["_veh"];
+
+	_hitparts = getAllHitPointsDamage _veh;
+	_hitparts params ["_hitpoints","_selections","_damages"];
+	_count = -1;
+
+	_output = [];
+
+	_hitpoints apply {
+		_count = _count + 1;
+		if (toUpper _x find "FUEL" >=0 AND _damages select _count > 0) then {
+
+			_output pushback [_damages select _count,_x];
+
+		}
+
+	};
+
+	_output sort true;
+	_leaking = false;
+	_leakLevel = 1;
+
+	if (count _output > 0) then {
+
+		_leaking = true;
+		_leakLevel = _output select 0 select 0;
+
+	};
+
+	[_leaking,_leaklevel]
+
+};
+
+
+
+
 GOM_fnc_repairCheck = {
 	params ["_veh"];
 
@@ -762,7 +807,7 @@ GOM_fnc_repairCheck = {
 
 	_abort = false;
 	_text = "";
-_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {getNumber (configfile >> "CfgVehicles" >> typeof _x >> "transportRepair") > 0} AND {_x getvariable ["GOM_fnc_repairCargo",0] > 0}});
+_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_repairCargo",0] > 0}});
 
 	if (_vehs isequalto [] AND GOM_fnc_aircraftLoadout_NeedsRepairSource) then {_abort = true;_text = "You have no more spare parts!";};
 	_vehs params ["_source"];
@@ -925,7 +970,7 @@ true
 GOM_fnc_setPylonsRepair = {
 
 	if (lbCursel 1500 < 0) exitWith {systemchat "No aircraft selected!";false};
-	params ["_obj","_repairSource"];
+	params ["_obj"];
 
 	_veh = call compile  lbData [1500,lbcursel 1500];
 
@@ -1010,6 +1055,13 @@ _check = _veh call GOM_fnc_refuelCheck;
 _check params ["_abort","_text","_refuelSource"];
 if (_abort) exitWith {true};
 
+_fuelLeak = [_veh] call GOM_fuelLeak;
+_fuelleak params ["_leaking","_leakingLevel"];
+if (_leaking AND _leakingLevel > 0.9) exitWith {systemchat "This aircraft will be heavily leaking fuel when refueling!";systemchat "Repair it first!";playsound "Simulation_Fatal";	_refuelSource setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",false,true];
+};
+
+if (_leaking AND _leakingLevel < 0.9 AND _leakingLevel > 0.1) then {systemchat format ["This aircraft will leak fuel down to %1%2 when refueling!",round ((1 - _leakinglevel) * 100),"%"];systemchat "Repair it first!";playsound "Simulation_Restart"};
+
 	_refuel = [_veh,_refuelSource,_obj] spawn {
 		params ["_veh","_refuelSource","_obj"];
 		_curFuel = fuel _veh;
@@ -1034,11 +1086,15 @@ if (_abort) exitWith {true};
 
 
 
-		systemchat "Aircraft has to remain stationary during refuelling procedure!";
-		systemchat format ["Refuelling %1 from %2. %3l in %4s. Fillrate: 1800l/min.",_vehDispName,_sourceDispname,[_missingfuel,1] call GOM_fnc_roundByDecimals,[_timeNeeded,1] call GOM_fnc_roundByDecimals];
+	systemchat format ["Refuelling %1 from %2. %3l in %4s. Fillrate: 1800l/min.",_vehDispName,_sourceDispname,[_missingfuel,1] call GOM_fnc_roundByDecimals,[_timeNeeded,1] call GOM_fnc_roundByDecimals];
 		_empty = false;
+		_leaking = false;
 		while {fuel _veh < 0.99 AND alive _veh AND !_abort AND !_empty} do {
 
+_fuelLeak = [_veh] call GOM_fuelLeak;
+_fuelleak params ["_leaking","_leakingLevel"];
+if (_leaking AND fuel _veh > (1 - _leakingLevel)) exitWith {systemchat format ["This aircraft will leak fuel down to %1%2 unless repaired!",round ( (1 - _leakinglevel) * 100),"%"];systemchat "Stopping Refueling procedure due to fuel leak!";playsound "Simulation_Fatal";	_refuelSource setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",false,true];
+};
 
 			if (speed _veh > 3 OR speed _refuelSource > 3) exitWith {_abort = true;systemchat "Aborting refuelling! Vehicle is moving!"};
 		_curFuel = fuel _veh;
@@ -1063,13 +1119,19 @@ if (_abort) exitWith {true};
 
 		if (_timer % 10 isEqualTo 0) then {systemchat format ["%1 remaining: %2l, %3s.",_vehDispName,_missingFuel,_timeNeeded];
 };
-		//	_update = [_obj] call GOM_fnc_updateDialog;
 			_timeout = time + 1;
 			waituntil {time > _timeout OR speed _veh > 3 OR speed _refuelSource > 3};
 			_timer = _timer + 1;
 		};
-			if (!_abort OR !_empty) then {	systemchat format ["%1 filled up!",_vehDispName];
-} else {systemchat "Refuelling aborted!"};
+			if (!_abort AND !_empty AND !_leaking) then {	systemchat format ["%1 filled up!",_vehDispName];
+				_refuelSource setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",false,true];
+
+} else {
+	_refuelSource setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",false,true];
+
+if (_abort) then {systemchat "Refuelling aborted!"};
+
+};
 
 	_refuelSource setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",false,true];
 		playSound "Click";
@@ -1297,6 +1359,9 @@ GOM_fnc_aircraftSetSerialNumber = {
 	_textures = getArray (configfile >> "CfgVehicles" >> typeof _veh >> "hiddenSelectionsTextures");
 	_numberTextures = _textures select {toUpper _x find "NUMBER" > 0};
 
+
+
+	if (lbcursel 1501 >= 0 OR lbcursel 1502 >= 0) exitWith {false};
 	if (_numberTextures isequalto []) exitWith {
 		ctrlSetText [1400,"N/A"];
 		systemchat "Aircraft does not support tail numbers.";playsound "Simulation_Fatal"; false};
@@ -1876,7 +1941,7 @@ GOM_fnc_aircraftLoadout = {
 	_getvar = _obj call BIS_fnc_objectVar;
 	finddisplay 66 displayCtrl 1500 ctrlAddEventHandler ["LBSelChanged",format ["lbclear 1502;lbsetcursel [1502,-1];lbclear 1501;lbsetcursel [1501,-1];[%1] call GOM_fnc_setPylonLoadoutLBPylonsUpdate;
 ;[%1] call GOM_fnc_aircraftLoadoutPaintjob;",_getvar]];//
-	finddisplay 66 displayCtrl 1501 ctrlAddEventHandler ["LBSelChanged",format ["lbclear 1502;lbsetcursel [1502,-1];[%1] call GOM_fnc_fillPylonsLB;[%1,'NOCOUNT'] call GOM_fnc_setPylonPriority
+	finddisplay 66 displayCtrl 1501 ctrlAddEventHandler ["LBSelChanged",format ["lbclear 1502;[%1] call GOM_fnc_fillPylonsLB;[%1,'NOCOUNT'] call GOM_fnc_setPylonPriority
 ",_getvar]];//
 	finddisplay 66 displayCtrl 1502 ctrlAddEventHandler ["LBSelChanged",format ["[%1] call GOM_fnc_updateAmmoCountDisplay;",_getvar]];//
 
@@ -1891,6 +1956,7 @@ GOM_fnc_aircraftLoadout = {
 	buttonSetAction [1606, format ["[%1] call GOM_fnc_aircraftLoadoutSavePreset",_getvar]];
 	buttonSetAction [1607, format ["[%1] call GOM_fnc_aircraftLoadoutDeletePreset",_getvar]];
 	buttonSetAction [1608, format ["[%1] call GOM_fnc_aircraftLoadoutLoadPreset",_getvar]];
+
 	buttonSetAction [1609, format ["lbclear 1502;lbSetCurSel [1502,-1];lbclear 1501;lbSetCurSel [1501,-1];lbclear 1500;lbSetCurSel [1500,-1]",""]];
 	buttonSetAction [1610, format ["[%1] call GOM_fnc_setPylonPriority",_getvar]];
 
