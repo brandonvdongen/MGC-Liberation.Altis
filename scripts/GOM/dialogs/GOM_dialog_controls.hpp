@@ -1,5 +1,4 @@
-//GOM_fnc_aircraftLoadout V1.21 made by Grumpy Old Man 17-5-2017
-
+//GOM_fnc_aircraftLoadout V1.32 made by Grumpy Old Man 17-5-2017
 #define GUI_GRID_X      (0)
 #define GUI_GRID_Y      (0)
 #define GUI_GRID_W      (0.025)
@@ -45,6 +44,7 @@ class GOMRscListbox_1500: GOMRscListBox
 	y = 11 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6 * GUI_GRID_W;
 	h = 12 * GUI_GRID_H;
+	sizeEx = 0.03;
 };
 class GOMRscListbox_1501: GOMRscListBox
 {
@@ -54,6 +54,7 @@ class GOMRscListbox_1501: GOMRscListBox
 	y = 11 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6 * GUI_GRID_W;
 	h = 12 * GUI_GRID_H;
+	sizeEx = 0.03;
 };
 class GOMRscListbox_1502: GOMRscListBox
 {
@@ -63,6 +64,7 @@ class GOMRscListbox_1502: GOMRscListBox
 	y = 11 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6 * GUI_GRID_W;
 	h = 12 * GUI_GRID_H;
+	sizeEx = 0.03;
 };
 class GOMRscStructuredText_1102: GOMRscStructuredText
 {
@@ -235,11 +237,11 @@ class GOMRscFrame_1800: GOMRscFrame
 	colorBackground[] = {-1,-1,-1,0.3};
 	colorActive[] = {0,0,0,1};
 };
-class GOMRscText_1009: GOMRscText
+class GOMRscButton_1610: GOMRscButton
 {
-	idc = 1009;
+	idc = 1610;
 
-	text = "Operated by: Pilot"; //--- ToDo: Localize;
+	text = "Priority: 1"; //--- ToDo: Localize;
 	x = 22 * GUI_GRID_W + GUI_GRID_X;
 	y = 14 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6.5 * GUI_GRID_W;
@@ -249,7 +251,7 @@ class GOMRscButton_1605: GOMRscButton
 {
 	idc = 1605;
 
-	text = "Change to Gunner"; //--- ToDo: Localize;
+	text = "Pilot control"; //--- ToDo: Localize;
 	x = 22 * GUI_GRID_W + GUI_GRID_X;
 	y = 15.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6.5 * GUI_GRID_W;
@@ -264,6 +266,7 @@ class GOMRscCombo_2100: GOMRscCombo
 	y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6.5 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
+	sizeEx = 0.03;
 };
 class GOMRscFrame_1801: GOMRscFrame
 {
@@ -337,6 +340,7 @@ class GOMRscCombo_2101: GOMRscCombo
 	y = 16 * GUI_GRID_H + GUI_GRID_Y;
 	w = 6.5 * GUI_GRID_W;
 	h = 1 * GUI_GRID_H;
+	sizeEx = 0.03;
 };
 class GOMRscFrame_1808: GOMRscFrame
 {

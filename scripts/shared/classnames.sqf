@@ -103,20 +103,20 @@ if ( heavy_vehicles_overwrite ) then { heavy_vehicles = heavy_vehicles_extension
 air_vehicles = [
 	["B_UAV_01_F",0,0,5],								//AR-2_Darter
 	["B_Heli_Light_01_F",0,0,10],						//MH-9_Littlebird
-	["B_Heli_Light_01_armed_F",0,30,10],				//AH-9_Pawnee
+	["B_Heli_Light_01_dynamicLoadout_F",0,30,10],		//AH-9_Pawnee
 	["I_Heli_light_03_unarmed_F",0,0,10],				//WY-55_Hellcat_Unarmed
-	["I_Heli_light_03_F",0,30,10],						//WY-55_Hellcat_Armed
-	["B_Heli_Attack_01_F",0,100,20],					//AH-99_Blackfoot
+	["I_Heli_light_03_dynamicLoadout_F",0,30,10],		//WY-55_Hellcat_Armed
+	["B_Heli_Attack_01_dynamicLoadout_F",0,100,20],		//AH-99_Blackfoot
 	["B_Heli_Transport_01_camo_F",0,20,20],	        	//UH-80_Ghosthawk
 	["I_Heli_Transport_02_F",0,0,25],					//CH-49_Mohawk
 	["B_Heli_Transport_03_F",0,20,30],					//CH-67_Huron
 	["C_Plane_Civil_01_racing_F",0,0,15],				//Caeser_BTT_Racing
-	["B_UAV_02_F",0,20,10],								//MQ-4A_Greyhawk
+	["B_UAV_02_dynamicLoadout_F",0,20,10],				//MQ-4A_Greyhawk
 	["B_UAV_02_CAS_F",0,50,10],							//MQ-4A_Greyhawk_CAS
- 	["B_T_UAV_03_F",0,100,10],							//MQ-12_Falcon
-	["I_Plane_Fighter_03_AA_F",0,150,40],				//A-143_Buzzard_AA
+ 	["B_T_UAV_03_dynamicLoadout_F",0,100,10],							//MQ-12_Falcon
+	["I_Plane_Fighter_03_dynamicLoadout_F",0,150,40],	//A-143_Buzzard_AA
 	["I_Plane_Fighter_CAS_F",0,150,40],					//A-143_Buzzard_CAS
-	["B_Plane_CAS_01_F",0,250,40],						//A-164_Wipeout
+	["B_Plane_CAS_01_dynamicLoadout_F",0,250,40],		//A-164_Wipeout
 	["B_T_VTOL_01_infantry_F",0,0,50],					//V-44_X_Blackfish_Infantry
 	["B_T_VTOL_01_vehicle_F",0,0,50],					//V-44_X_Blackfish_Vehicle
 	["B_T_VTOL_01_armed_F",0,250,50],					//V-44_X_Blackfish_Armed
@@ -124,7 +124,7 @@ air_vehicles = [
     ["B_Plane_Fighter_01_Stealth_F",0,250,50],          //Black Wasp II Stealth
     ["O_Plane_Fighter_02_F",0,250,50],                  //Shikra
     ["O_Plane_Fighter_02_Stealth_F",0,250,50],          //Shikra Stealth
-    ["B_UAV_05_F",0,150,50],                             //Sentinel
+    ["B_UAV_05_F",0,150,50],                            //Sentinel
     ["I_Plane_Fighter_04_F",0,250,50]	                //Gryphon
 ];
 if ( isNil "air_vehicles_extension" ) then { air_vehicles_extension = [] };
@@ -166,7 +166,8 @@ buildings = [
 	["Flag_Gendarmerie_F",0,0,0],
 	["Land_CampingChair_V1_F",0,0,0],
 	["Land_CampingChair_V2_F",0,0,0],
-	["Land_CampingTable_F",0,0,0],
+	["Land_CampingTable_small_F",0,0,0],
+	["Land_CampingTable_F",0,0,0],	
 	["Land_DieselGroundPowerUnit_01_F",0,0,0],
 	["Land_spp_Transformer_F",0,0,0],
 	["Land_SolarPanel_3_F",0,0,0],
@@ -193,6 +194,13 @@ buildings = [
 	["Land_HBarrier_01_big_tower_green_F",0,0,0],	
 	["Land_CncBarrierMedium4_F",0,0,0],
 	["Land_CncBarrier_F",0,0,0],
+	["Land_GuardRailing_01_F",0,0,0],		
+	["Land_Wall_IndCnc_2deco_F",0,0,0],
+
+		
+	["Land_TyreBarrier_01_line_x4_F",0,0,0],	
+	["Land_Mil_WallBig_4m_F",0,0,0],	
+	["Land_Mil_WallBig_Corner_F",0,0,0],	
 	["Land_CncWall4_F",0,0,0],
 	["Land_CncShelter_F",0,0,0],
 	["Land_BagBunker_Small_F",0,0,0],
@@ -203,6 +211,11 @@ buildings = [
 	["Land_BagFence_Corner_F",0,0,0],
 	["Land_BagFence_End_F",0,0,0],
 	["Land_BagFence_Round_F",0,0,0],
+	["Land_BagFence_01_short_green_F",0,0,0],
+	["Land_BagFence_01_long_green_F",0,0,0],
+	["Land_BagFence_01_corner_green_F",0,0,0],
+	["Land_BagFence_01_end_green_F",0,0,0],
+	["Land_BagFence_01_round_green_F",0,0,0],	
 	["Land_Razorwire_F",0,0,0],
 	["RoadBarrier_F",0,0,0],
 	["Land_Sign_WarningMilAreaSmall_F",0,0,0],
@@ -211,7 +224,9 @@ buildings = [
 	["ShootingPos_F",0,0,0],
 	["Land_Obstacle_Bridge_F",0,0,0],
 	["Land_JumpTarget_F",0,0,0],
-	["Land_ClutterCutter_large_F",0,0,0],
+	["Land_Cargo20_military_green_F",0,0,0],
+	["Land_Cargo40_military_green_F",0,0,0],
+	["Land_ClutterCutter_large_F",0,0,0],	
 	["Land_Airport_Tower_F",0,0,0],
 	["Land_Dome_Big_F",0,0,0],
 	["Land_Dome_Small_F",0,0,0],
@@ -254,7 +269,7 @@ if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [ "B_T_Recon_TL_F","B_T_Recon_F","B_T_Recon_F","B_T_Recon_Medic_F","B_T_Recon_LAT_F","B_T_Recon_LAT_F","B_T_Recon_M_F","B_T_Sniper_F","B_T_Recon_F" ]; };
 if ( isNil "blufor_squad_para" ) then { blufor_squad_para = [] };
 if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [ "B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F","B_T_Soldier_PG_F" ]; };
-if ( isNil "uavs" ) then { uavs = [] }; uavs = [] + uavs + [ "B_UGV_01_F","B_UGV_01_rcws_F","B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_T_UAV_03_F" ];
+if ( isNil "uavs" ) then { uavs = [] }; uavs = [] + uavs + [ "B_UGV_01_F","B_UGV_01_rcws_F","B_UAV_01_F","B_UAV_02_dynamicLoadout_F","B_UAV_02_CAS_F","B_T_UAV_03_dynamicLoadout_F" ];
 if ( isNil "elite_vehicles_extension" ) then { elite_vehicles_extension = [] }; elite_vehicles = [] + elite_vehicles_extension + [];
 //What can ressuply what comes below.
 if ( isNil "ai_resupply_sources_extension" ) then { ai_resupply_sources_extension = [] };

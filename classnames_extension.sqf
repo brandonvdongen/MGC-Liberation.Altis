@@ -230,10 +230,11 @@ elite_vehicles_extension = [
 	"B_T_MBT_01_TUSK_F",					//M2A1_Slammer_UP			
 	"B_T_MBT_01_arty_F",					//M4_Scorcher
 	"B_T_MBT_01_mlrs_F",					//M5_Sandstorm_MLRS
-	"B_Heli_Attack_01_F",					//AH-99_Blackfoot
+	"B_Heli_Attack_01_dynamicLoadout_F",	//AH-99_Blackfoot
 	"B_Plane_CAS_01_F",						//A-164_Wipeout
 	"JS_JC_FA18E",							//FA-18_SuperHornet_E
-	"JS_JC_FA18F" 							//FA-18_SuperHornet_F
+	"JS_JC_FA18F", 							//FA-18_SuperHornet_F
+	"B_T_VTOL_01_armed_F"					//V-44_X_Blackfish_Armed
 ];
 
 //Blacklisted arsenal items such as deployable weapons that should be bought instead. 

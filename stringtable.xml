@@ -1795,11 +1795,7 @@
 						<Russian>Вкл - задержка 4 часа</Russian>
 				</Key>
 				<Key ID="STR_SORRY">
-						<Original>Sorry!</Original>
-						<French>Désolé !</French>
-						<German>Entschuldigung!</German>
-						<Spanish>Lo siento!</Spanish>
-						<Russian>Извини!</Russian>
+						<Original>Server Restarting Please come back in a moment!</Original>
 				</Key>
 				<Key ID="STR_COMMANDER_NOT_AUTHORIZED">
 						<Original>You are not authorized to use the commander slot on this server.</Original>
