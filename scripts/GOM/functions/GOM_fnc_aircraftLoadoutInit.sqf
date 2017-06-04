@@ -708,7 +708,7 @@ GOM_fnc_rearmCheck = {
 
 	_abort = false;
 	_text = "";
-	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_ammoCargo",0] > 0}});
+	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_ammoCargo",0] >= 0}});
 
 	if (_vehs isequalto []) then {_abort = true;_text = "You have no valid ammo sources!";};
 	_vehs params ["_source"];
@@ -738,9 +738,10 @@ GOM_fnc_refuelCheck = {
 	_abort = false;
 	_text = "";
 
-	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_fuelCargo",0] > 0}});
+	_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_fuelCargo",0] >= 0}});
 
 	if (_vehs isequalto [] AND GOM_fnc_aircraftLoadout_NeedsFuelSource) then {_abort = true;_text = "You have no valid fuel sources!";};
+	_vehs params ["_source"];
 	_vehs params ["_source"];
 	_cargo = 10000;
 	//_cargo = _source getVariable ["GOM_fnc_fuelCargo",0];
@@ -809,7 +810,7 @@ GOM_fnc_repairCheck = {
 
 	_abort = false;
 	_text = "";
-_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_repairCargo",0] > 0}});
+_vehs = ((_veh nearEntities ["All",50]) select {speed _x < 1 AND {alive _x} AND {_x getvariable ["GOM_fnc_repairCargo",0] >= 0}});
 
 	if (_vehs isequalto [] AND GOM_fnc_aircraftLoadout_NeedsRepairSource) then {_abort = true;_text = "You have no more spare parts!";};
 	_vehs params ["_source"];
