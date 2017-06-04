@@ -598,7 +598,7 @@ GOM_fnc_installPylons = {
 	_check pushback _pylonNum;
 	_veh setVariable ["GOM_fnc_airCraftLoadoutPylonInstall",_check,true];
 
-sleep random [0.5,1,2.5];
+sleep 0.5;
 
 
 
@@ -609,7 +609,7 @@ sleep random [0.5,1,2.5];
 
 		[_veh,[_pylonNum,0]] remoteexec ["SetAmmoOnPylon",0];
 
-sleep random [0.5,1,2.5];
+sleep 0.5;
 		[_ammosource,_mag,_veh] call GOM_fnc_handleAmmoCost;
 	if (_finalamount <= 24) then {
 
@@ -618,7 +618,7 @@ sleep random [0.5,1,2.5];
 
 		[_veh,[_pylonNum,_i]] remoteexec ["SetAmmoOnPylon",0];
 		_sound = [_veh,_pylonNum-1] call GOM_fnc_pylonSound;
-		sleep random [0.5,1,2.5];
+		sleep 0.5;
 
 	};
 
@@ -626,7 +626,7 @@ sleep random [0.5,1,2.5];
 
 		[_veh,[_pylonNum,_finalamount]] remoteexec ["SetAmmoOnPylon",0];
 		_sound = [_veh,_pylonNum-1] call GOM_fnc_pylonSound;
-sleep random [0.5,1,2.5];
+sleep 0.5;
 	};
 		_ammosource setvariable ["GOM_fnc_aircraftLoadoutBusyAmmoSource",false,true];
 	_checkOut = _veh getVariable ["GOM_fnc_airCraftLoadoutPylonInstall",[]];
@@ -758,6 +758,7 @@ GOM_fnc_refuelCheck = {
 
 if (_abort) then {systemchat _text;playsound "Simulation_Fatal"};
 	if (!_abort) then {_source setVariable ["GOM_fnc_aircraftLoadoutBusyFuelSource",true,true];};
+
 
 	[_abort,_text,_source]
 
