@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=20;
+		nextID=22;
 	};
 	class Camera
 	{
-		pos[]={8639.5039,54.707844,29584.639};
-		dir[]={-0.86821473,-0.49586588,0.021994747};
-		up[]={-0.4957341,0.86836666,0.01255674};
-		aside[]={0.025327314,5.1117604e-007,0.99976104};
+		pos[]={8715.1904,66.22554,29576.953};
+		dir[]={-0.84698611,-0.45421836,-0.27656409};
+		up[]={-0.43181798,0.89085084,-0.14100246};
+		aside[]={-0.31042665,1.1401717e-006,0.95069319};
 	};
 };
 binarizationWanted=0;
@@ -7541,7 +7541,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8439.6621,26.591064,29453.607};
+				position[]={8439.6621,27.117208,29453.607};
 				angles[]={0,4.0598278,0};
 			};
 			side="Empty";
@@ -7551,7 +7551,7 @@ class Mission
 			};
 			id=615;
 			type="B_Plane_Fighter_01_Stealth_F";
-			atlOffset=0.25987625;
+			atlOffset=0.78602028;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7588,36 +7588,35 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8419.5723,23.941441,29473.162};
+						position[]={8419.5723,24.696766,29473.162};
 						angles[]={0,3.9970658,0};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						aiRadarUsage=338107428;
 					};
 					id=618;
 					type="B_UAV_AI";
-					atlOffset=0.10434914;
+					atlOffset=0.85967445;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8419.5723,23.941441,29473.162};
+						position[]={8419.5723,24.696766,29473.162};
 						angles[]={0,3.9970658,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						aiRadarUsage=175250973;
 					};
 					id=619;
 					type="B_UAV_AI";
-					atlOffset=0.10434914;
+					atlOffset=0.85967445;
 				};
 			};
 			class Attributes
@@ -7656,18 +7655,18 @@ class Mission
 				};
 			};
 			id=617;
-			atlOffset=0.10434914;
+			atlOffset=0.85967445;
 		};
 		class Item420
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8419.5723,25.794113,29473.088};
+				position[]={8419.5723,26.549438,29473.088};
 				angles[]={0,3.9970658,0};
 			};
 			side="West";
-			flags=6;
+			flags=2;
 			class Attributes
 			{
 				init="call{0 = [this,5] execVM ""drone_respawn.sqf"";" \n "this animate [""wing_fold_l"", 1, true]; this animate [""wing_fold_r"", 1, true]; " \n "}";
@@ -7676,7 +7675,7 @@ class Mission
 			};
 			id=620;
 			type="B_UAV_05_F";
-			atlOffset=0.10434914;
+			atlOffset=0.85967445;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7706,18 +7705,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8583.1582,26.435059,29519.822};
+				position[]={8583.1582,27.018698,29519.822};
 				angles[]={0,4.0774903,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{0 = [this,5] execVM ""vehicle_respawn.sqf"";this animate [""wing_fold_l"", 1, true]; this animate [""wing_fold_r"", 1, true]; " \n "}";
 			};
 			id=621;
 			type="B_Plane_Fighter_01_F";
-			atlOffset=0.10435295;
+			atlOffset=0.6879921;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -15379,18 +15377,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8451.1475,25.985275,29509.746};
+				position[]={8451.1475,26.583971,29509.746};
 				angles[]={0,0.97097903,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{0 = [this,5] execVM ""vehicle_respawn.sqf"";" \n "clearWeaponCargoGlobal this;   clearMagazineCargoGlobal this;   clearItemCargoGlobal this;   clearBackpackCargoGlobal this;}";
 			};
 			id=1131;
 			type="B_CTRG_Heli_Transport_01_sand_F";
-			atlOffset=0.01035881;
+			atlOffset=0.60905457;
 		};
 		class Item518
 		{
@@ -16144,7 +16141,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8548.8867,26.061958,29493.992};
+				position[]={8548.8867,26.864424,29493.992};
 				angles[]={0,4.0774903,0};
 			};
 			side="Empty";
@@ -16154,7 +16151,7 @@ class Mission
 			};
 			id=1214;
 			type="B_Plane_Fighter_01_F";
-			atlOffset=207.0769;
+			atlOffset=0.53371811;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16185,7 +16182,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8568.8486,21.686895,29509.725};
-				angles[]={0,2.5806696,-0};
+				angles[]={0,2.5806696,0};
 			};
 			side="Empty";
 			class Attributes
@@ -16250,34 +16247,33 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8571.6992,23.837437,29593.438};
+						position[]={8571.6992,24.671078,29593.438};
 						angles[]={0,2.503186,0};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 					};
 					id=1220;
 					type="B_UAV_AI";
-					atlOffset=0.0003490448;
+					atlOffset=0.8339901;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8571.6992,23.837437,29593.438};
+						position[]={8571.6992,24.671078,29593.438};
 						angles[]={0,2.503186,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 					};
 					id=1221;
 					type="B_UAV_AI";
-					atlOffset=0.0003490448;
+					atlOffset=0.8339901;
 				};
 			};
 			class Attributes
@@ -16316,18 +16312,18 @@ class Mission
 				};
 			};
 			id=1218;
-			atlOffset=0.058286667;
+			atlOffset=0.8339901;
 		};
 		class Item562
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={8571.6992,25.430283,29593.354};
+				position[]={8571.6992,26.205986,29593.354};
 				angles[]={0,2.503186,0};
 			};
 			side="West";
-			flags=6;
+			flags=2;
 			class Attributes
 			{
 				init="call{0 = [this,5] execVM ""drone_respawn.sqf"";}";
@@ -16337,7 +16333,7 @@ class Mission
 			};
 			id=1219;
 			type="B_T_UAV_03_dynamicLoadout_F";
-			atlOffset=0.058286667;
+			atlOffset=0.8339901;
 		};
 		class Item563
 		{
@@ -16345,7 +16341,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8431.9219,21.710012,29464.354};
-				angles[]={0,4.0283422,-0};
+				angles[]={0,4.0283422,0};
 			};
 			side="Empty";
 			class Attributes
